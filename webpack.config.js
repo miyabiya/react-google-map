@@ -24,5 +24,15 @@ module.exports = {
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.GOOGLE_API': JSON.stringify(process.env.GOOGLE_API),
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  ],
  
 };
